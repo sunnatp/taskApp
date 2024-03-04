@@ -1,0 +1,27 @@
+<div class="container pb-4mb-5">
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="/dashboard">Orqaga qaytish</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Add task</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col">
+            <h3 class="text-center text-white">Add New Task</h3>
+        </div>
+    </div>
+
+    <form action="/dashboard/add" method="post" class="position-relative">
+        <div class="form-group mb-4">
+            <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
+        </div>
+        <div class="form-group mb-4">
+            <textarea class="form-control" cols="20" rows="7" name="body" id="body" placeholder="Task a task..." required = "true"> </textarea>
+        </div>
+        <div class="form-group mb-4">
+            <button type="submit" class="btn btn-primary">+Save Task</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,67 @@
+<div class="container pb-5 mb-5">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="text-light">Salom <%= userName%></h1>
+        </div>
+        <div class="col text-end">
+            <a class="btn btn-primary" href="/dashboard/add">+ New Task</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <% if(tasks.length > 0) { tasks.forEach(task => { %>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div style="box-shadow: 10px solid white;" class="card border-primary bg-primary" style="min-height: 210px;">
+                    <a style="text-decoration: none;" href="/dashboard/item/<%= task._id %>" class="card-body text-decoration-none">
+                        <h5 class="card-title text-light"><%= task.title %></h5>
+                        <p class="card-text text-truncate text-light"><%= task.body %></p>
+                    </a>
+                </div>
+            </div>
+        <% }) } else { %>
+            <div class="row">
+                <div class="col-3">
+                    <img class="img-fluid" src="https://c8.alamy.com/comp/DYGM2M/shrek-forever-after-2010-mike-mitchell-dir-moviestore-collection-ltd-DYGM2M.jpg" alt="img">
+                </div>
+                <div class="col mt-md-4">
+                    <h2>Welcome</h2>
+                    <h4>Let's start with you first task</h4>
+                    <a href="/dashboard/add">Create One</a>
+                </div>
+            </div>
+        <% } %>
+        <% if(tasks.length > 0) { %>
+            <nav aria-label="Page navigation example ">
+                <ul class="pagination">
+                    <% if(current == 1) { %>
+                        <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+                    <% } else { %>
+                        <li class="page-item"><a class="page-link" href="/dashboard">First</a></li>
+                    <% } %>
+                    <% let i = current > 5 ? current - 4 : 1 %>
+                    <% if(i !== 1) { %>
+                        <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    <% } %>
+                    <% for( ; i <= current + 4 && i < pages; i++) { %>
+                        <% if(i == current) { %>
+                            <li class="page-item"><a class="page-link" href="#"><%= i %></a></li>
+                        <% } else { %>
+                            <li class="page-item"><a class="page-link" href="/dashboard/?page=<%= i %>"><%= i %></a></li>
+                        <% } %>
+                        <% if(i == current + 4 && i < pages) { %>
+                            <li class="page-item"><a class="page-link" href="#">...</a></li>
+                        <% } %>
+                    <% } %>
+
+                    <% if(pages == current) { %>
+                        <li class="page-item"><a class="page-link" href="#">Last</a></li>
+                    <% } else { %>
+                        <li class="page-item"><a class="page-link" href="/dashboard/?page=<%= pages %>">Last</a></li>
+                    <% } %>
+                </ul>
+            </nav>
+        <% } %>
+        <a class="bbto" href="/dashboard/message">Adminga so'rov jonatish</a>
+    </div>
+
+</div>
